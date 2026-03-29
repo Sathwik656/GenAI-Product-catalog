@@ -19,7 +19,7 @@ export interface ProductResponse {
 }
 
 export const generateContent = async (formData: FormData): Promise<ProductResponse> => {
-  const response = await axios.post(`${API_URL}/generate-content`, formData, {
+  const response = await axios.post(`${API_URL}/api/generate-content`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -28,16 +28,16 @@ export const generateContent = async (formData: FormData): Promise<ProductRespon
 };
 
 export const getProducts = async (): Promise<ProductResponse[]> => {
-  const response = await axios.get(`${API_URL}/products`);
+  const response = await axios.get(`${API_URL}/api/products`);
   return response.data;
 };
 
 export const getProductById = async (id: string): Promise<ProductResponse> => {
-  const response = await axios.get(`${API_URL}/products/${id}`);
+  const response = await axios.get(`${API_URL}/api/products/${id}`);
   return response.data;
 };
 
 export const deleteProduct = async (id: string): Promise<void> => {
-  console.log("API CALL: Deleting product at", `${API_URL}/products/${id}`);
-  await axios.delete(`${API_URL}/products/${id}`);
+  console.log("API CALL: Deleting product at", `${API_URL}/api/products/${id}`);
+  await axios.delete(`${API_URL}/api/products/${id}`);
 };
